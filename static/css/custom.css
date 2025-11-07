@@ -135,10 +135,3 @@ figure.sponsor-svg-logo img {
 .widget-sponsors .widget__list .widget__item img {
     max-height: 120px;
 }
-
-/*
- * OBS pages - sponsors panel for streaming.
- */
-.obs-sponsors-page {
-    padding: 20px;
-}
