@@ -137,8 +137,8 @@ figure.sponsor-svg-logo img {
 }
 
 /*
- * Hidden pages - sponsors only page.
+ * OBS pages - sponsors panel for streaming.
  */
-.sponsors-only-page {
+.obs-sponsors-page {
     padding: 20px;
 }

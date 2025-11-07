@@ -1,8 +1,0 @@
-{{- $user := .Get "user" -}}
-{{- $id := .Get "id" -}}
-{{- if and $user $id -}}
-<blockquote class="twitter-tweet"><a href="https://x.com/{{ $user }}/status/{{ $id }}"></a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-{{- else -}}
-<!-- x shortcode requires both 'user' and 'id' parameters -->
-{{- end -}}
