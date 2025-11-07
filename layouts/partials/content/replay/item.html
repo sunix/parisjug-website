@@ -2,19 +2,11 @@
 {{ $videoInfoUrl := urlquery . }}
 {{ $videoInfoUrl := printf "https://noembed.com/embed?dataType=json&url=%s" $videoInfoUrl}}
 {{ $videoInfo := resources.GetRemote $videoInfoUrl }}
-{{ $videoTitle := "Enregistrement" }}
-{{ with $videoInfo }}
-    {{ with .Err }}
-        {{/* Silently handle error and use default title */}}
-    {{ else }}
-        {{ $videoData := $videoInfo.Content | transform.Unmarshal }}
-        {{ $videoTitle = $videoData.title }}
-    {{ end }}
-{{ end }}
+{{ $videoInfo := $videoInfo.Content | transform.Unmarshal }}
 
-<a href="{{ . }}" title="Regarder l'enregistrement sur YouTube" target="_blank">
+<a href="{{ . }}" title="Regarder l'enregistrement de {{ $videoInfo.title }} sur YouTube" target="_blank">
     <figure>
         <img src="https://img.youtube.com/vi/{{ $videoId }}/mqdefault.jpg" alt="Aperçu de l'enregistrement" />
-        <figcaption>{{ $videoTitle }}</figcaption>
+        <figcaption>{{ $videoInfo.title }}</figcaption>
     </figure>
 </a>
