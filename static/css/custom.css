@@ -135,3 +135,10 @@ figure.sponsor-svg-logo img {
 .widget-sponsors .widget__list .widget__item img {
     max-height: 120px;
 }
+
+/*
+ * Hidden pages - sponsors only page.
+ */
+.sponsors-only-page {
+    padding: 20px;
+}
