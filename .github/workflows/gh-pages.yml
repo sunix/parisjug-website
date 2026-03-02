@@ -2,8 +2,6 @@ name: GitHub Pages
 
 on:
   push:
-    branches:
-      - master
   schedule:
     # Every Tuesday and Thursday at 05:00 UTC
     - cron: '0 5 * * 2,4'
@@ -20,7 +18,7 @@ jobs:
       HUGO_CACHE_DIR: /tmp/hugo_cache
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
@@ -32,7 +30,7 @@ jobs:
           # extended: true
       
       - name: Restore Hugo cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ${{ env.HUGO_CACHE_DIR }}
           key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
@@ -40,12 +38,11 @@ jobs:
             ${{ runner.os }}-hugomod-
 
       - name: Build
-        env:
-          HUGO_PARAMS_TWITTER: ${{ secrets.TWITTER_TOKEN }}
         run: hugo --minify --baseURL https://${{ vars.DOMAIN }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/master'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public

@@ -4,12 +4,14 @@ publishDate: 2025-10-01
 publishFrontPageDate: 2025-11-11
 register: "https://www.helloasso.com/associations/bjpc/evenements/novembre-2025"
 tags:
- - java
- - IA
- - Software Craft
+ - ai
+ - test
+ - tools
 owner: 
 title: "Soirée Software Craft"
-#videos:
+videos:
+ - https://www.youtube.com/watch?v=FUT2HUSdGA8
+ - https://www.youtube.com/watch?v=eePuXt7-2bs
 ---
 
 ## Date et lieu

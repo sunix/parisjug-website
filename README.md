@@ -32,6 +32,22 @@ docker run --rm -it \
   server --bind 0.0.0.0
 ```  
 
+## PR Preview
+
+To generate a preview deployment of a pull request:
+
+1. Comment `/preview` on the pull request
+2. The GitHub Actions workflow will automatically build and deploy the site to Surge.sh
+3. A preview URL will be posted as a comment (e.g., `https://pr-123-parisjug-preview.surge.sh`)
+
+**Note for maintainers:** The `SURGE_TOKEN` secret must be configured in the repository settings. To generate a token:
+
+```shell
+npm install -g surge
+surge login
+surge token  # Add this to GitHub Secrets as SURGE_TOKEN
+```
+
 ## Creating Content
 
 ### Creating an Event
@@ -48,14 +64,14 @@ hugo new content/events/<year>/<month>-<day>-<name>.md
 - `draft` (optional): If set to `true`, the event won't be published on website
 - `publishDate` (optional): The date from which the event will be published (requires to rebuild the site)
 - `publishFrontPageDate` (optional): The date from which the event will be published on the front page
-- register (optional): The link to the eventbrite registration frame (ex `https://eventbrite.fr/tickets-external?eid=xxxx"`)
+- register (optional): The link to the eventbrite registration frame (ex `https://www.helloasso.com/associations/bjpc/evenements/janvier-2026`)
 - `tags` (optional): A list of tags related to the event for navigation and SEO
 - `title`: The title of the event (without date)
 - `videos` (optional): A list of the replay videos (ex: `https://www.youtube.com/watch?v=xxxx`)
 
 3. Add the event details as content
 
-### Creating a Spearker
+### Creating a Speaker
 
 1. Create a document using:
 
@@ -66,7 +82,11 @@ hugo new content/speakers/<first_name>-<last_name>.md
 2. Edit the speaker metadata:
 
 - `title`: The readable name of the speaker
+- `bluesky` (optional): The Bluesky handle of the speaker (full handle like username.bsky.social).
+- `linkedin` (optional): The LinkedIn profile URL of the speaker.
 - `twitter` (optional): The Twitter handle of the speaker (without `@`)
+
+ If `bluesky` or `twitter` is specified, the speaker avatar will be fetched and displayed.
 
 3. Add the speaker biography as content.
 
@@ -91,7 +111,7 @@ Sponsors data are located in three locations:
   - The event summary otherwise.
 - Speakers page in an automatec alphabetic index.
 - Speaker conference list from the speaker page is updated if a speaker is mentioned in an event content.
-- Speaker profile picture comes from the Twitter and is regularly updated.
+- Speaker profile picture comes from Bluesky or Twitter/X (if available) and can be updated using `scritpts/update-speaker-avatars.sh`.
 
 ### Custom Shortcodes
 
@@ -131,6 +151,12 @@ Using the following parameters:
 - `title` _recommanded_: The description of the frame content for accessibility,
 - `width` _optional_: The width of the frame (using [CSS values](https://developer.mozilla.org/en-US/docs/Web/CSS/width#values) like `300px`or `100%`),
 - `height` _optional_: The height of the frame (using CSS values](https://developer.mozilla.org/en-US/docs/Web/CSS/height#values) like `300px` or `100%`).
+
+#### Speaker
+
+The `speaker` shortcode displays a speaker card with avatar, bio, and social links:
+
+`{{< speaker "jose-paumard" >}}`
 
 #### Section: Code of Conduct
 
