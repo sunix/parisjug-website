@@ -1,0 +1,287 @@
+/* Header customization */
+.header__container {
+    background-size: cover;
+    background-image:
+        linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 0, 0, 0.5)),
+        url('/img/header.jpeg');
+}
+
+.logo__tagline {
+    color: rgb(255, 255, 255);
+}
+
+/*
+ * Events.
+ */
+
+/* Replay partial/shorcode */
+div.event-replay {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; 
+    justify-content: center;
+    margin: 10px;
+}
+div.event-replay a {
+    width: 45%;
+    min-width: 320px;
+}
+
+/*
+ * Speakers.
+ */
+
+/* List page grid */
+.speaker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.speaker-item {
+    text-align: center;
+}
+
+.speaker-item .avatar {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 12px;
+    border: 2px solid #e22c2f;
+}
+
+.speaker-item .name {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.speaker-item .talks {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.speaker-item a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.speaker-item a:hover .name {
+    color: #e22c2f;
+}
+
+/* Legacy inline list */
+ul.speakers-list {
+    margin-bottom: 1rem;
+}
+ul.speakers-list li {
+    display: inline-block;
+}
+ul.speakers-list li + li::before {
+    content: " | ";
+}
+
+/* Single page */
+.speaker-profile {
+    float: left;
+    margin: 0 16px 16px 0;
+}
+
+.avatar {
+    border: 3px solid #e22c2f;
+}
+
+article.post h1.post__title {
+    display: inline-block;
+}
+
+/* Social links */
+.speaker-social-links {
+    display: inline-flex;
+    gap: 12px;
+    margin-left: 16px;
+}
+
+.speaker-social-link {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    background-color: rgba(226, 44, 47, 0.1);
+}
+
+.speaker-social-link:hover {
+    background-color: #e22c2f;
+}
+
+.speaker-social-link:hover .speaker-social-icon {
+    fill: white;
+}
+
+.speaker-social-icon {
+    width: 20px;
+    height: 20px;
+    fill: #e22c2f;
+}
+
+/* Widget shortcode for event pages */
+.speaker-widget {
+    background: #f9f9f9;
+    border-left: 3px solid #e22c2f;
+    padding: 20px;
+    margin: 20px 0;
+    overflow: auto;
+}
+
+.speaker-widget .avatar {
+    float: left;
+    margin: 0 20px 20px 0;
+    border: none;
+}
+
+.speaker-widget .avatar img {
+    width: 96px;
+    height: 96px;
+    border: 3px solid #e22c2f;
+}
+
+.speaker-widget h3 {
+    margin: 0 0 10px;
+    font-size: 1.3em;
+}
+
+.speaker-widget h3 a {
+    color: #e22c2f;
+    text-decoration: none;
+}
+
+.speaker-widget h3 a:hover {
+    text-decoration: underline;
+}
+
+.speaker-widget .bio {
+    line-height: 1.6;
+}
+
+.speaker-widget .social {
+    margin-top: 10px;
+}
+
+.speaker-widget .social .speaker-social-link {
+    margin-right: 8px;
+}
+
+/* Avatar placeholders */
+.avatar-placeholder {
+    display: inline-block;
+    background-color: rgba(226, 44, 47, 0.1);
+    font-weight: bold;
+    color: #e22c2f;
+    text-align: center;
+}
+
+.speaker-item .avatar-placeholder {
+    border: 2px solid rgba(226, 44, 47, 0.3);
+    line-height: 80px;
+}
+
+.speaker-profile .avatar-placeholder {
+    border: 3px solid #e22c2f;
+    line-height: 128px;
+}
+
+@media (max-width: 768px) {
+    .speaker-widget .avatar {
+        float: none;
+        margin: 0 auto 15px;
+        text-align: center;
+    }
+
+    .speaker-widget {
+        text-align: center;
+    }
+}
+
+/* About pages */
+
+table.team {
+    text-align: center;
+    border: none;
+}
+
+table.team td {
+    border: none;
+}
+
+/*
+ * Gallery shortcode.
+ */
+
+/* Gallery bloc */
+div.gallery {
+    text-align: center;
+    margin: 0 0 1.25rem;
+}
+
+/* Gallery image */
+div.gallery img {
+    padding: 3px;
+    border-radius: 10px;
+}
+
+/*
+ * Sponsor section shortcode.
+ */
+
+div.sponsor-section {
+    text-align: center;
+}
+
+div.sponsor-section figure {
+    display: inline;
+}
+
+div.sponsor-section figure + figure img {
+    margin-left: 15px;
+}
+
+div.sponsor-section figure img {
+    margin-bottom: 10px;
+}
+
+div.sponsor-section-platinium figure img {
+    max-width: 200px;
+    max-height: 50px;
+}
+
+div.sponsor-section-gold figure img {
+    max-width: 150px;
+    max-height: 40px;
+}
+
+/*
+ * Sponsors page.
+ */
+figure.sponsor-svg-logo {
+    text-align: center;
+}
+figure.sponsor-svg-logo img {
+    max-width: 600px;
+    max-height: 300px;
+}
+
+/*
+ * Sidebar.
+ */
+
+/* Sponsor widget */
+.widget-sponsors .widget__list .widget__item {
+    text-align: center;
+    border-bottom: 0px;
+}
+
+.widget-sponsors .widget__list .widget__item img {
+    max-height: 120px;
+}
